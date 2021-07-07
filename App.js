@@ -27,16 +27,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AppNavContainer from './src/navigations';
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Text>Hello WOrld</Text>
-      </SafeAreaView>
-    </NavigationContainer>
-  );
+  return <AppNavContainer></AppNavContainer>;
 };
 
 export default App;
