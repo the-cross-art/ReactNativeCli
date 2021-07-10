@@ -4,8 +4,8 @@ import colors from '../../assets/themes/colors';
 
 export default StyleSheet.create({
   logoImage: {
-    height: 150,
-    width: 150,
+    height: 60,
+    width: 60,
     alignSelf: 'center',
     marginTop: 50,
   },
