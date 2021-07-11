@@ -1,10 +1,31 @@
-import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
+import React from 'react';
+import {useContext} from 'react';
+import {useState} from 'react';
 import RegisterComponent from '../../components/Signup';
+import {LOGIN} from '../../constants/routeNames';
+import register, {clearAuthState} from '../../context/actions/auth/register';
+import {GlobalContext} from '../../context/Provider';
 
 const Register = () => {
   const [form, setForm] = useState({});
+  const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
+  const {
+    authDispatch,
+    authState: {error, loading, data},
+  } = useContext(GlobalContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {
+        if (data || error) {
+          clearAuthState()(authDispatch);
+        }
+      };
+    }, [data, error]),
+  );
 
   const onChange = ({name, value}) => {
     setForm({...form, [name]: value});
@@ -59,23 +80,26 @@ const Register = () => {
       });
     }
 
-    // if (
-    //   Object.values(form).length === 5 &&
-    //   Object.values(form).every(item => item.trim().length > 0) &&
-    //   Object.values(errors).every(item => !item)
-    // ) {
-    //   register(form)(authDispatch)(response => {
-    //     navigate(LOGIN, {data: response});
-    //   });
-    // }
-    console.log('form:>>', form);
+    if (
+      Object.values(form).length === 5 &&
+      Object.values(form).every(item => item.trim().length > 0) &&
+      Object.values(errors).every(item => !item)
+    ) {
+      register(form)(authDispatch)(response => {
+        console.log('sent');
+        navigate(LOGIN, {data: response});
+      });
+    }
   };
+
   return (
     <RegisterComponent
       onSubmit={onSubmit}
       onChange={onChange}
       form={form}
       errors={errors}
+      error={error}
+      loading={loading}
     />
   );
 };

@@ -29,17 +29,20 @@ const RegisterComponent = ({
 
       <View>
         <Text style={styles.subTitle}>Please Register here</Text>
-
+        {error?.error && (
+          <Message retry danger retryFn={onSubmit} message={error?.error} />
+        )}
         <View style={styles.form}>
           <Input
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
+            error={errors.userName || error?.username?.[0]}
             onChangeText={value => {
               onChange({name: 'userName', value});
             }}
-            error={errors.userName}
           />
+
           <Input
             label="First name"
             iconPosition="right"
@@ -47,41 +50,49 @@ const RegisterComponent = ({
             onChangeText={value => {
               onChange({name: 'firstName', value});
             }}
-            error={errors.firstName}
+            error={errors.firstName || error?.first_name?.[0]}
           />
           <Input
-            label="Last name"
+            label="Last Name"
             iconPosition="right"
             placeholder="Enter Last name"
+            error={errors.lastName || error?.last_name?.[0]}
             onChangeText={value => {
               onChange({name: 'lastName', value});
             }}
-            error={errors.lastName}
           />
           <Input
             label="Email"
             iconPosition="right"
             placeholder="Enter Email"
+            error={errors.email || error?.email?.[0]}
             onChangeText={value => {
               onChange({name: 'email', value});
             }}
-            error={errors.emailName}
           />
+
           <Input
             label="Password"
-            secureTextEntry={true}
-            icon={<Text>Show</Text>}
-            iconPosition="right"
             placeholder="Enter Password"
+            secureTextEntry={isSecureEntry}
+            icon={
+              <TouchableOpacity
+                onPress={() => {
+                  setIsSecureEntry(prev => !prev);
+                }}>
+                <Text>{isSecureEntry ? 'Show' : 'Hide'}</Text>
+              </TouchableOpacity>
+            }
+            iconPosition="right"
+            error={errors.password || error?.password?.[0]}
             onChangeText={value => {
               onChange({name: 'password', value});
             }}
-            error={errors.password}
           />
           <CustomButton
-            disabled={false}
+            disabled={loading}
             onPress={onSubmit}
-            loading={false}
+            loading={loading}
             primary
             title="Submit"
           />
