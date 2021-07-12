@@ -7,6 +7,7 @@ import CustomButton from '../../components/common/CustomButton';
 import Input from '../../components/common/Input';
 import styles from './styles';
 import {LOGIN} from '../../constants/routeNames';
+import Message from '../common/message';
 
 const RegisterComponent = ({
   onSubmit,

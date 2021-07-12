@@ -11,7 +11,7 @@ import {
 
 const auth = (state, {type, payload}) => {
   switch (type) {
-    // case LOGIN_LOADING:
+    case LOGIN_LOADING:
     case REGISTER_LOADING:
       return {
         ...state,
@@ -25,13 +25,13 @@ const auth = (state, {type, payload}) => {
         data: payload,
       };
 
-    // case LOGIN_SUCCESS:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     data: payload,
-    //     isLoggedIn: true,
-    //   };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: payload,
+        isLoggedIn: true,
+      };
 
     // case LOGOUT_USER:
     //   return {
@@ -48,13 +48,13 @@ const auth = (state, {type, payload}) => {
         error: payload,
       };
 
-    // case CLEAR_AUTH_STATE:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     data: null,
-    //     error: null,
-    //   };
+    case CLEAR_AUTH_STATE:
+      return {
+        ...state,
+        loading: false,
+        data: null,
+        error: null,
+      };
 
     default:
       return state;

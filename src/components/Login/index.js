@@ -7,6 +7,7 @@ import CustomButton from '../../components/common/CustomButton';
 import Input from '../../components/common/Input';
 import styles from './styles';
 import {REGISTER} from '../../constants/routeNames';
+import Message from '../common/message';
 
 const LoginComponent = ({
   error,
@@ -26,27 +27,61 @@ const LoginComponent = ({
         source={require('../../assets/images/logo.png')}
         style={styles.logoImage}
       />
+
       <View>
-        <Text style={styles.title}>Welcome to Twitter</Text>
+        <Text style={styles.title}>Welcome to RNContacts</Text>
         <Text style={styles.subTitle}>Please login here</Text>
 
         <View style={styles.form}>
+          {justSignedUp && (
+            <Message
+              onDismiss={() => {}}
+              success
+              message="Account created successfully"
+            />
+          )}
+          {error && !error.error && (
+            <Message
+              onDismiss={() => {}}
+              danger
+              message="invalid credentials"
+            />
+          )}
+
+          {error?.error && <Message danger onDismiss message={error?.error} />}
+
           <Input
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
-            // error={'This field is required'}
+            value={form.userName || null}
+            onChangeText={value => {
+              onChange({name: 'userName', value});
+            }}
           />
+
           <Input
             label="Password"
-            secureTextEntry={true}
-            icon={<Text>Show</Text>}
-            iconPosition="right"
             placeholder="Enter Password"
+            secureTextEntry={isSecureEntry}
+            icon={
+              <TouchableOpacity
+                onPress={() => {
+                  setIsSecureEntry(prev => !prev);
+                }}>
+                <Text>{isSecureEntry ? 'Show' : 'Hide'}</Text>
+              </TouchableOpacity>
+            }
+            iconPosition="right"
+            onChangeText={value => {
+              onChange({name: 'password', value});
+            }}
           />
+
           <CustomButton
-            disabled={false}
-            loading={false}
+            disabled={loading}
+            onPress={onSubmit}
+            loading={loading}
             primary
             title="Submit"
           />
