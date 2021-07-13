@@ -2,6 +2,7 @@ import {DEV_BACKEND_URL, PROD_BACKEND_URL} from '@env';
 
 const devEnvironmentVariables = {
   BACKEND_URL: DEV_BACKEND_URL,
+  // BACKEND_URL: 'https://twitter-server-imran.herokuapp.com/api',
 };
 
 const prodEnvironmentVariables = {

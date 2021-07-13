@@ -29,7 +29,7 @@ const LoginComponent = ({
       />
 
       <View>
-        <Text style={styles.title}>Welcome to RNContacts</Text>
+        <Text style={styles.title}>Welcome to Twitter</Text>
         <Text style={styles.subTitle}>Please login here</Text>
 
         <View style={styles.form}>
