@@ -9,42 +9,44 @@ import {
 } from 'react-native';
 import Container from '../../components/common/container';
 import {SETTINGS} from '../../constants/routeNames';
-// import logoutUser from '../../context/actions/auth/logoutUser';
+import logoutUser from '../../context/actions/auth/logoutUser';
 import styles from './styles';
 // import Icon from '../../components/common/Icon';
 
 const SideMenu = ({navigation, authDispatch}) => {
-  // const handleLogout = () => {
-  //   navigation.toggleDrawer();
-  //   Alert.alert('Logout!', 'Are you sure you want to logout?', [
-  //     {
-  //       text: 'Cancel',
-  //       onPress: () => {},
-  //     },
+  const handleLogout = () => {
+    navigation.toggleDrawer();
+    Alert.alert('Logout!', 'Are you sure you want to logout?', [
+      {
+        text: 'Cancel',
+        onPress: () => {},
+      },
 
-  //     {
-  //       text: 'OK',
-  //       onPress: () => {
-  //         logoutUser()(authDispatch);
-  //       },
-  //     },
-  //   ]);
-  // };
+      {
+        text: 'OK',
+        onPress: () => {
+          logoutUser()(authDispatch);
+        },
+      },
+    ]);
+  };
 
-  // const menuItems = [
-  //   {
-  //     icon: <Icon type="fontisto" size={17} name="player-settings" />,
-  //     name: 'Settings',
-  //     onPress: () => {
-  //       navigation.navigate(SETTINGS);
-  //     },
-  //   },
-  //   {
-  //     icon: <Icon type="material" size={17} name="logout" />,
-  //     name: 'Logout',
-  //     onPress: handleLogout,
-  //   },
-  // ];
+  const menuItems = [
+    {
+      // icon: <Icon type="fontisto" size={17} name="player-settings" />,
+      icon: <Text>T</Text>,
+      name: 'Settings',
+      onPress: () => {
+        navigation.navigate(SETTINGS);
+      },
+    },
+    {
+      // icon: <Icon type="material" size={17} name="logout" />,
+      icon: <Text>T</Text>,
+      name: 'Logout',
+      onPress: handleLogout,
+    },
+  ];
   return (
     <SafeAreaView>
       <Container>
@@ -55,14 +57,14 @@ const SideMenu = ({navigation, authDispatch}) => {
           style={styles.logoImage}
         />
 
-        {/* <View style={{paddingHorizontal: 30}}>
+        <View style={{paddingHorizontal: 30}}>
           {menuItems.map(({name, icon, onPress}) => (
             <TouchableOpacity onPress={onPress} key={name} style={styles.item}>
               <View style={styles.icon}>{icon}</View>
               <Text style={styles.itemText}>{name}</Text>
             </TouchableOpacity>
           ))}
-        </View> */}
+        </View>
       </Container>
     </SafeAreaView>
   );

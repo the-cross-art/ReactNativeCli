@@ -33,13 +33,13 @@ const auth = (state, {type, payload}) => {
         isLoggedIn: true,
       };
 
-    // case LOGOUT_USER:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     data: null,
-    //     isLoggedIn: false,
-    //   };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        loading: false,
+        data: null,
+        isLoggedIn: false,
+      };
 
     case REGISTER_FAIL:
       return {

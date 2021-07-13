@@ -4,7 +4,7 @@ export default StyleSheet.create({
   logoImage: {
     height: 150,
     width: 150,
-    // alignSelf: 'center',
+    alignSelf: 'center',
     marginTop: 50,
   },
 

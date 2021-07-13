@@ -32,7 +32,7 @@ const AppNavContainer = () => {
   };
   useEffect(() => {
     getUser();
-  }, []);
+  }, [isLoggedIn]);
 
   console.log('isLoggedIn :>> ', isAuthenticated);
 
@@ -40,11 +40,7 @@ const AppNavContainer = () => {
     <>
       {authLoaded ? (
         <NavigationContainer>
-          {isLoggedIn || isAuthenticated ? (
-            <DrawerNavigator />
-          ) : (
-            <AuthNavigator />
-          )}
+          {isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
         </NavigationContainer>
       ) : (
         <ActivityIndicator />
