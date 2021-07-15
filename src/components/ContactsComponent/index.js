@@ -6,7 +6,13 @@ import CustomButton from '../common/CustomButton';
 const ContactsComponent = ({modalVisible, setModalVisible}) => {
   return (
     <View>
-      <AppModal setModalVisible={setModalVisible} modalVisible={modalVisible} />
+      <AppModal
+        modalFooter={<></>}
+        modalBody={<View></View>}
+        title="My @Username"
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
 
       <CustomButton
         title="Open Modal"
