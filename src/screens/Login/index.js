@@ -10,12 +10,12 @@ const Login = () => {
   const [justSignedUp, setJustSignedUp] = useState(false);
   const {params} = useRoute();
 
-  // React.useEffect(() => {
-  //   if (params?.data) {
-  //     setJustSignedUp(true);
-  //     setForm({...form, userName: params.data.username});
-  //   }
-  // }, [params]);
+  React.useEffect(() => {
+    if (params?.data) {
+      setJustSignedUp(true);
+      setForm({...form, userName: params.data.username});
+    }
+  }, [params]);
 
   const {
     authDispatch,

@@ -1,10 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import Container from '../../components/common/container';
+import ContactsComponent from '../../components/ContactsComponent';
 
 const Contacts = () => {
   const {setOptions, toggleDrawer} = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+
   React.useEffect(() => {
     setOptions({
       headerLeft: () => (
@@ -18,9 +21,10 @@ const Contacts = () => {
     });
   }, []);
   return (
-    <Container>
-      <Text>Recent Posts...!!!</Text>
-    </Container>
+    <ContactsComponent
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
+    />
   );
 };
 
