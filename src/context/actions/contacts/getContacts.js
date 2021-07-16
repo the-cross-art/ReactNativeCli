@@ -11,7 +11,7 @@ export default () => dispatch => {
   });
 
   axios
-    .get('/tweets')
+    .get('/tweets/all')
     .then(res => {
       dispatch({
         type: GET_CONTACTS_SUCCESS,
