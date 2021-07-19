@@ -4,6 +4,8 @@ import {Text, View} from 'react-native';
 import {LOGIN, REGISTER} from '../constants/routeNames';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
+import Loginotp from '../screens/Login/loginotp';
+import Verify from '../screens/Login/verify';
 
 const AuthNavigator = () => {
   const AuthStack = createStackNavigator();

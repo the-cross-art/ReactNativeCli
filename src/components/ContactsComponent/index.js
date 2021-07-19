@@ -26,8 +26,9 @@ const styles = StyleSheet.create({
     height: 50,
   },
   logo: {
-    width: 66,
-    height: 58,
+    width: 100,
+    height: 75,
+    alignSelf: 'center',
   },
   floatingActionButton: {
     backgroundColor: 'blue',

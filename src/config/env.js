@@ -7,7 +7,7 @@ const devEnvironmentVariables = {
 const prodEnvironmentVariables = {
   BACKEND_URL: 'http://10.0.2.2:8000/api',
 };
-
 export default __DEV__ ? devEnvironmentVariables : prodEnvironmentVariables;
 
 // BACKEND_URL: 'https://twitter-server-imran.herokuapp.com/api',
+// BACKEND_URL: 'http://10.0.2.2:8000/api',

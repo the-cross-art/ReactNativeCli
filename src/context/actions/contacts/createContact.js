@@ -5,23 +5,22 @@ import {
 } from '../../../constants/actionTypes';
 import axios from '../../../helpers/axiosInstance';
 
-export default (form) => (dispatch) => (onSuccess) => {
+export default form => dispatch => onSuccess => {
   const requestPayload = {
-    country_code: form.phoneCode || '',
-    first_name: form.firstName || '',
-    last_name: form.lastName || '',
-    phone_number: form.phoneNumber || '',
-    contact_picture: form.contactPicture || null,
-    is_favorite: form.isFavorite || false,
+    tweet_name: form.tweet_name || '',
+    tweet: form.tweet || '',
+    // user: form.user || '',
   };
+  console.log(form);
 
   dispatch({
     type: CREATE_CONTACT_LOADING,
   });
 
   axios
-    .post('/contacts/', requestPayload)
-    .then((res) => {
+    .post('/tweets/new', requestPayload)
+    .then(res => {
+      console.log('res.data', res.data);
       dispatch({
         type: CREATE_CONTACT_SUCCESS,
         payload: res.data,
@@ -29,7 +28,7 @@ export default (form) => (dispatch) => (onSuccess) => {
 
       onSuccess();
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: CREATE_CONTACT_FAIL,
         payload: err.response

@@ -10,6 +10,7 @@ import Contacts from '../screens/Contacts';
 import CreateContact from '../screens/CreateContact';
 import ContactDetails from '../screens/ContactDetail';
 import Settings from '../screens/Settings';
+import Verify from '../screens/Login/verify';
 import {Text} from 'react-native';
 
 const HomeNavigator = () => {
