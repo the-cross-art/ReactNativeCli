@@ -6,7 +6,7 @@ import Container from '../../components/common/container';
 import CustomButton from '../../components/common/CustomButton';
 import Input from '../../components/common/Input';
 import styles from './styles';
-import {REGISTER} from '../../constants/routeNames';
+import {LOGINOTP} from '../../constants/routeNames';
 import Message from '../common/message';
 
 const LoginComponent = ({
@@ -90,7 +90,7 @@ const LoginComponent = ({
             <Text style={styles.infoText}>Need a new account?</Text>
             <TouchableOpacity
               onPress={() => {
-                navigate(REGISTER);
+                navigate(LOGINOTP);
               }}>
               <Text style={styles.linkBtn}>Register</Text>
             </TouchableOpacity>
